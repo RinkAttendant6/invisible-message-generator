@@ -1,0 +1,26 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 output {
+    font-size: 0.7em;
+    background-color: navy;
+}
+
+input:invalid,
+textarea:invalid {
+    outline: thin solid red;
+}
+
+input:valid,
+textarea:valid {
+    outline: thin solid green;
+}
+
+textarea {
+    min-height: 3ex;
+}
+
+.text-monospace {
+    font-family: Consolas, monospace;
+}
