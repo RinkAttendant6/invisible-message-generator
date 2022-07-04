@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang='en-CA'>
+<meta charset='utf-8'>
+<meta http-equiv='Content-Security-Policy' content="default-src 'self';
+    img-src data: https://img.shields.io;
+    style-src 'self' https://cdn.jsdelivr.net/;
+    script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net/">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<link rel='stylesheet' href='main.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/water.css@2.1.1/out/dark.min.css'
+    integrity='sha256-FD9D6bdBVZQ4EOLqJCE0YNtDHl2BJ71gKCoTNGBnXCQ=' crossorigin='anonymous'>
+<link rel='stylesheet'
+    href='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/github-dark.min.css'>
+
+<link rel='icon'
+    href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍋</text></svg>'>
+
+<title>Invisible Message Generator</title>
+
+<h1>Invisible Message Generator 🍋🌞</h1>
+
+<p>Generate JavaScript strings containing invisible messages!</p>
+
+<p>
+    <a href='https://github.com/RinkAttendant6/invisible-message-generator/blob/main/LICENSE'>
+        <img alt='MPL 2.0 license'
+            src='https://img.shields.io/github/license/RinkAttendant6/invisible-message-generator?style=flat-square'>
+    </a>
+    <a href='https://github.com/RinkAttendant6/invisible-message-generator/stargazers'>
+        <img alt='GitHub Repo stars'
+            src='https://img.shields.io/github/stars/RinkAttendant6/invisible-message-generator?style=social'>
+    </a>
+</p>
+
+<form>
+    <fieldset>
+        <legend>Input</legend>
+
+        <p>
+            <label>
+                Variable name
+                <input type='text' class='text-monospace' spellcheck='false' autocomplete='off' id='variableName'
+                    value='LEMON_JUICE' required>
+                <small>
+                    <a href='https://mothereff.in/js-variables' target='_blank' rel='noopener'>
+                        What's a valid JavaScript variable name?
+                    </a>
+                </small>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                Decoder output
+                <select id='decodingOutputFn'>
+                    <option value='' selected>Do not show decoding function</option>
+                    <option value='console.log'>Standard output (console.log)</option>
+                    <option value='window.alert'>Browser dialog (window.alert)</option>
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                Decoder function name
+                <input type='text' class='text-monospace' spellcheck='false' autocomplete='off' id='decoderFnName'
+                    value='lightItUp' required disabled>
+            </label>
+        </p>
+
+        <div>
+            <label for='message'>
+                Message (up to 1 <abbr title='mibibyte'>MiB</abbr>):
+            </label>
+            <textarea id='message' rows='5' maxlength='1048576' placeholder='Enter a message…' autocomplete='off'
+                autofocus></textarea>
+            <details>
+                <summary><small>What characters can my message contain?</small></summary>
+                <p>Any character in the first 1023 Unicode code points in the <a
+                        href='https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane' target='_blank'
+                        rel='noopener'>Basic
+                        Multilingual Plane</a>. This includes the most common Latin characters (including accented
+                    ones),
+                    phonetic alphabet characters, and Greek characters.</p>
+                <p>Notably, emojis and other Unicode characters such as shapes, mathematical symbols, and arrows are not
+                    supported.</p>
+            </details>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>
+            Output
+            <small>(<output id='outputBytes' for='message'>0 bytes</output></small>)
+        </legend>
+        <output>
+            <pre><code class='language-js' id='output'></code></pre>
+        </output>
+        <button type='button' id='copyToClipboard'>
+            Copy code snippet to clipboard
+        </button>
+        <button type='button' id='downloadToFile'>
+            Download code snippet
+        </button>
+    </fieldset>
+</form>
+
+<hr>
+
+<dl>
+    <dt>How do I run the code?</dt>
+    <dd>
+        <p>First of all, ensure that you are including the decoding function.</p>
+        <p>The easiest way to run this is to copy and paste the code snippet into the console in your <a
+                href='https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools'>browser's
+                developer tools</a>.</p>
+        <p>Alternatively, you may download/save the code snippet locally and run it using <a
+                href='https://nodejs.org/'>Node.js</a>. In this case, ensure that your code uses standard output, as
+            <code>window.alert</code> is not a function in Node.js.
+        </p>
+    </dd>
+
+    <dt>What is this dark magic?!</dt>
+    <dd>
+        <p>
+            Visit the
+            <a href='https://github.com/RinkAttendant6/invisible-message-generator/wiki/Frequently-Asked-Questions'>
+                <abbr title='Frequently Asked Questions'>FAQ</abbr> page
+            </a>
+            to find out more.
+        </p>
+    </dd>
+</dl>
+
+<script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js'
+    integrity='sha256-xoh0y6ov0WULfXcLMoaA6nZfszdgI8w2CEJ/3k8NBIE=' crossorigin='anonymous'></script>
+<script type='module' defer src='main.js'></script>
